@@ -7,6 +7,8 @@ jobs:
   job1:
     name: Pruebas
     runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
     steps:
       - name: Checkout de repositorio
         uses: actions/checkout@v2
@@ -21,6 +23,16 @@ jobs:
       - name:  correr-pruebas
         id: correr-pruebas
         run: python -m unittest -v tests/test_persona.py
+      - name: Validar Resulado o errores
+        if: ${{ failure() }}
+        env:
+          MENSAJE_ERROR: Una o varias pruebas fallaron
+        run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
+      - name: Validar resultados sin errores
+        if: ${{success()}}
+        env:
+          MENSAJE_EXITO: Las pruebas fueron exitosas
+          run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
       - name: Cálculo de la covertura
         id: cubrimiento
         run: |
