@@ -17,3 +17,5 @@ jobs:
       - name:  correr-pruebas
         id: correr-pruebas
         run: python -m unittest -v tests/test_persona.py
+      - name: Cálculo de la covertura
+      
