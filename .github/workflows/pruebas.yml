@@ -17,8 +17,3 @@ jobs:
       - name:  correr-pruebas
         id: correr-pruebas
         run: python -m unittest -v tests/test_persona.py
-      - name: cálculo de cumbrimiento
-        id: cumbrimiento
-        run: |
-          coverage run -m unitarias tests/test_persona.py
-          coverage report -m
