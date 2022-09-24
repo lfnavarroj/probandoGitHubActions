@@ -32,7 +32,7 @@ jobs:
         if: ${{ success() }}
         env:
           MENSAJE_EXITO: Las pruebas fueron exitosas
-          run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
+        run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
       - name: Cálculo de la covertura
         id: cubrimiento
         run: |
