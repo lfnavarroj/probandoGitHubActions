@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout de repositorio
         uses: actions/checkout@v2
-      - name: configuracion del entrono de python
+      - name: configuración del entorno de Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
@@ -20,7 +20,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name:  correr-pruebas
+      - name:  correr pruebas
         id: correr-pruebas
         run: python -m unittest -v tests/test_persona.py
       - name: Validar Resulado o errores
